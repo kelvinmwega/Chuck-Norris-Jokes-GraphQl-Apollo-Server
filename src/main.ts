@@ -3,7 +3,7 @@ import resolvers from "./resolvers";
 import typeDefs from "./type-defs";
 import { environment } from "./environment";
 
-const server = new ApolloServer({
+const server: ApolloServer = new ApolloServer({
   resolvers,
   typeDefs,
   introspection: environment.apollo.introspection,
