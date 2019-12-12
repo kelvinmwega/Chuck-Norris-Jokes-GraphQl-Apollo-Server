@@ -2,21 +2,11 @@
 import "reflect-metadata";
 import { UserResolver } from "./resolvers/userResolver"
 import {JokeResolver} from "./resolvers/jokeResolver" 
-import typeDefs from "./type-defs";
 import { environment } from "./environment";
 import { createConnection } from "typeorm";
 import express from "express";
 import { ApolloServer } from "apollo-server-express";
 import { buildSchema } from "type-graphql";
-
-// const server: ApolloServer = new ApolloServer({
-//   resolvers: resolvers,
-//   typeDefs,
-//   introspection: environment.apollo.introspection,
-//   playground: environment.apollo.playground
-// });
-
-// server.listen().then(({ url }) => console.log(`Server ready at ${url}. `));
 
 (async () => {
   const app = express();

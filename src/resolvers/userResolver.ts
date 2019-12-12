@@ -23,8 +23,8 @@ class LoginResponse {
 @Resolver()
 export class UserResolver {
   @Query(() => String)
-  async hello() {
-    return "Hello World";
+  async status() {
+    return "!! Server Is Up !!";
   }
 
   @Query(() => String)
