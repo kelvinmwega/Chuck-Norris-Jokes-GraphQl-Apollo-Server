@@ -6,7 +6,7 @@ services:
     depends_on:
       - postgres
     environment:
-      DATABASE_URL: postgres://user:pass@postgres:5432/mydb
+      DATABASE_URL: postgres://user:admin@admin:5432/mydb
       NODE_ENV: development
       PORT: 4000
     ports:
