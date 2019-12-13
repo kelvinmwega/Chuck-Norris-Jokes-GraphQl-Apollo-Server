@@ -1,7 +1,6 @@
-
 import "reflect-metadata";
-import { UserResolver } from "./resolvers/userResolver"
-import {JokeResolver} from "./resolvers/jokeResolver" 
+import { UserResolver } from "./resolvers/userResolver";
+import { JokeResolver } from "./resolvers/jokeResolver";
 import { environment } from "./environment";
 import { createConnection } from "typeorm";
 import express from "express";
@@ -14,17 +13,17 @@ import { buildSchema } from "type-graphql";
   await createConnection();
 
   const apolloServer = new ApolloServer({
+    introspection: true,
+    playground: true,
     schema: await buildSchema({
       resolvers: [UserResolver, JokeResolver]
     }),
-    context: ({ req, res }) => ({ req, res }),
-    introspection: environment.apollo.introspection,
-    playground: environment.apollo.playground
+    context: ({ req, res }) => ({ req, res })
   });
 
   apolloServer.applyMiddleware({ app });
   app.listen(4000, () => {
-    console.log("Express server started at localhost:4000");
+    console.log("CN Jokes server started at localhost:4000");
   });
 })();
 
