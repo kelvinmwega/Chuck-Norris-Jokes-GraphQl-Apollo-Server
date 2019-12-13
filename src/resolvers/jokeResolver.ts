@@ -11,19 +11,20 @@ import {
 import { isAuth } from "../helpers/isAuth";
 import axios, { AxiosResponse } from "axios";
 import { MyContext } from "../helpers/MyContext";
+import { type } from "os";
 
-@ObjectType({ description: "Object representing Joke" })
+@ObjectType("joke")
 class Joke {
-  @Field()
+  @Field(type => String)
   id!: string;
 
-  @Field()
+  @Field(type => String)
   value!: string;
 
-  @Field()
+  @Field(type => String)
   url!: string;
 
-  @Field()
+  @Field(type => String)
   icon_url!: string;
 
   @Field(type => [String])
@@ -43,10 +44,7 @@ export class JokeResolver {
 
   @Query(returns => Joke)
   // @UseMiddleware(isAuth)
-  async joke(
-    @Ctx() { payload }: MyContext,
-    @Arg("category") category: string
-  ) {
+  async joke(@Ctx() { payload }: MyContext, @Arg("category") category: string) {
     const response: AxiosResponse = await axios.get(
       `https://api.chucknorris.io/jokes/random?category=${category}`
     );

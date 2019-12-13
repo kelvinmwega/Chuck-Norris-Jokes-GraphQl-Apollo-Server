@@ -14,7 +14,7 @@ import { isAuth } from "../helpers/isAuth";
 import { MyContext } from "../helpers/MyContext";
 import { User } from "../entity/User";
 
-@ObjectType()
+@ObjectType("loginresp")
 class LoginResponse {
   @Field()
   accessToken: string;

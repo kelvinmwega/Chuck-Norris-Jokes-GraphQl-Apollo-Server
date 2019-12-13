@@ -6,11 +6,17 @@ import { createConnection } from "typeorm";
 import express from "express";
 import { ApolloServer } from "apollo-server-express";
 import { buildSchema } from "type-graphql";
+import ormconfig from "./ormconfig";
 
 (async () => {
   const app = express();
 
-  await createConnection();
+  try {
+    const conn = await createConnection(ormconfig);
+    console.log(`db connected successfully : ${conn.isConnected}`);
+  } catch (error) {
+    console.log(`Connection Failed ${error}`);
+  }
 
   const apolloServer = new ApolloServer({
     introspection: true,
